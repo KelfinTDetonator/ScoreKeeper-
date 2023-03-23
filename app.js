@@ -1,14 +1,14 @@
 const p1Button = document.querySelector('#p1Btn');
 const p2Button = document.querySelector('#p2Btn');
-const reset = document.querySelector('#reset')
-const p1Display = document.querySelector('#p1Display')
-const p2Display = document.querySelector('#p2Display')
-const winScoreSelect = document.querySelector('#total')
+const resetBtn = document.querySelector('#reset');
+const p1Display = document.querySelector('#p1Display');
+const p2Display = document.querySelector('#p2Display');
+const winningScoreSelect = document.querySelector('#playto');
 
 
 let p1Score = 0;
 let p2Score = 0;
-let winScore = 2;
+let winScore = 3;
 let isGameOver = false;
 
 p1Button.addEventListener('click', ()=>{
@@ -31,19 +31,33 @@ p2Button.addEventListener('click', ()=>{
     }
     
 })
-let b = 0;
-winScoreSelect.addEventListener('change', ()=>{
 
-    b = this.value;
-    console.log(b);
+winningScoreSelect.addEventListener('change', ()=>{
+    let score = document.getElementById('playto');
+    let scoreMaks = score.value;
+    winScore = parseInt(scoreMaks);
 })
 
-reset.addEventListener('click', ()=>{
-    isGameOver = false;
-        p1Score = 0;
-        p2Score = 0;
+// winningScoreSelect.addEventListener('change', ()=>{
+//     winScore = parseInt(this.value);  //error, gatau euy ?
+// })
+
+// resetBtn.addEventListener('click', rst)
+
+// function rst(){
+//     isGameOver = false;
+//         p1Score = 0;
+//         p2Score = 0;
         
-        p1Display.textContent = 0;
-        p2Display.textContent = 0;
-})
+//         p1Display.textContent = 0;
+//         p2Display.textContent = 0;
+// }
+resetBtn.addEventListener('click', ()=>{
+    isGameOver = false;
+    p1Score = 0;
+    p2Score = 0;
+    p1Display.textContent = 0;
+    p2Display.textContent = 0;
+})   
+
     
