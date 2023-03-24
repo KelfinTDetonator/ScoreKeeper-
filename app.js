@@ -16,6 +16,10 @@ p1Button.addEventListener('click', ()=>{
         p1Score += 1;
         if(p1Score === winScore){
             isGameOver = true;
+            p1Display.classList.add('has-text-success');
+            p2Display.classList.add('has-text-danger');
+            p1Button.disabled = true;
+            p2Button.disabled = true;
         }
         p1Display.textContent = p1Score;
     }
@@ -26,6 +30,10 @@ p2Button.addEventListener('click', ()=>{
         p2Score += 1;
         if(p2Score === winScore){
             isGameOver = true;
+            p1Display.classList.add('has-text-danger');
+            p2Display.classList.add('has-text-success');
+            p1Button.disabled = true;
+            p2Button.disabled = true;
         }
         p2Display.textContent = p2Score;
     }
@@ -36,28 +44,33 @@ winningScoreSelect.addEventListener('change', ()=>{
     let score = document.getElementById('playto');
     let scoreMaks = score.value;
     winScore = parseInt(scoreMaks);
+    rst();
 })
 
 // winningScoreSelect.addEventListener('change', ()=>{
-//     winScore = parseInt(this.value);  //error, gatau euy ?
+//     winScore = parseInt(this.value);  
 // })
 
-// resetBtn.addEventListener('click', rst)
+resetBtn.addEventListener('click', rst)
 
-// function rst(){
-//     isGameOver = false;
-//         p1Score = 0;
-//         p2Score = 0;
-        
-//         p1Display.textContent = 0;
-//         p2Display.textContent = 0;
-// }
-resetBtn.addEventListener('click', ()=>{
+function rst(){
     isGameOver = false;
-    p1Score = 0;
-    p2Score = 0;
-    p1Display.textContent = 0;
-    p2Display.textContent = 0;
-})   
+        p1Score = 0;
+        p2Score = 0;
+        
+        p1Display.textContent = 0;
+        p2Display.textContent = 0;
+        p1Display.classList.remove('has-text-success', 'has-text-danger');
+        p2Display.classList.remove('has-text-danger', 'has-text-success');
+        p1Button.disabled = false;
+        p2Button.disabled = false;
+}
+// resetBtn.addEventListener('click', ()=>{
+//     isGameOver = false;
+//     p1Score = 0;
+//     p2Score = 0;
+//     p1Display.textContent = 0;
+//     p2Display.textContent = 0;
+// })   
 
     
